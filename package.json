@@ -4,6 +4,7 @@
   "description": "khatabook Application",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "npx tailwindcss -i ./public/stylesheets/tailwind.css -o ./public/stylesheets/style.css --watch"
   },
