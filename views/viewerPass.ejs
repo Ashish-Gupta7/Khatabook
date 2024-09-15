@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<body class="flex items-center justify-center">
+  <form action="/profile/hisab/verify" method="post" class="flex flex-col items-start">
+    <h1 class="text-3xl text-red-500">Passcode</h1>
+    <input class="border border-black mt-2 rounded-md px-3 py-2" type="password" name="passcode" id=""
+      placeholder="Enter Passcode">
+    <input class="bg-blue-500 px-4 py-2 rounded-md text-white mt-2" type="submit" value="View Hisab">
+  </form>
+</body>
+
+</html>

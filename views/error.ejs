@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khatabook - Error</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<body class="relative">
+  <h1 class="absolute text-xl px-8 py-6">Khatabook</h1>
+  <div class="text-center h-full flex flex-col items-center justify-center">
+    <img class="mb-8" src="https://i.postimg.cc/2yrFyxKv/giphy.gif" alt="gif_ing" />
+    <!-- Error Title -->
+    <h1 class="text-6xl font-bold text-red-500">Oops! Some Error, Status Code: <%= status %>
+    </h1>
+
+    <!-- Error Message -->
+
+    <p class="mt-6 text-lg text-gray-600"><span class="text-black font-semibold">Error Message:</span> <span
+        class="text-emerald-900 font-semibold ">
+        <%= err %>
+      </span>
+    </p>
+
+    <!-- Back to Home Button -->
+    <div class="mt-8">
+      <a href="/"
+        class="bg-blue-500 text-white py-3 px-6 rounded-full shadow hover:bg-blue-600 transition duration-300">
+        Go Back to Home
+      </a>
+    </div>
+  </div>
+
+</body>
+
+</html>

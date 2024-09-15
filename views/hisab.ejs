@@ -1,0 +1,62 @@
+<%- include('./partials/header.ejs') %>
+    <div class="absolute copieddiv hidden left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-2 bg-blue-500 rounded-md">
+        <h3 class="text-white font-semibold">
+            Link Copied
+        </h3>
+    </div>
+    <div
+        class="absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] max-w-2xl mx-auto p-6 bg-white rounded-lg border-2 border-black">
+        <div class="flex justify-between items-center mb-4">
+            <div class="flex space-x-4">
+                <% if(hisab.encrypted) { %>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded">Encrypted</button>
+                    <% } else { %>
+                        <button class="bg-emerald-500 text-white px-4 py-2 rounded">Available</button>
+                        <% } %>
+                            <% if(hisab.shareable) { %>
+                                <button class="sharebtn text-gray-700 px-4 py-2 rounded flex items-center space-x-2">
+                                    <span class="copyUrl">Share as a link</span>
+                                </button>
+                                <% } %>
+                                    <a href="/profile/hisab/delete/<%= hisab._id %>"
+                                        class="bg-red-500 text-white px-4 py-2 rounded">Delete</a>
+                                    <% if(hisab.editPermission) { %>
+                                        <a href="/profile/hisab/edit/<%= hisab._id %>"
+                                            class="bg-yellow-400 text-white px-4 py-2 rounded">Edit</a>
+                                        <% } %>
+            </div>
+        </div>
+        <div class="text-gray-500 mb-4">Created on <%= hisab.createdAt.toLocaleDateString() %>
+        </div>
+        <h2 class="text-xl font-semibold mb-2">
+            <%= hisab.title %>
+        </h2>
+        <p class="text-gray-700">
+            <%= hisab.description %>
+        </p>
+    </div>
+
+
+    <script>
+        var timer;
+        const sharebtn = document.querySelector(".sharebtn");
+        sharebtn.addEventListener("click", function (e) {
+            clearTimeout(timer);
+
+            document.querySelector(".copieddiv")
+                .classList.remove("hidden");
+
+            timer = setTimeout(function () {
+                document.querySelector(".copieddiv")
+                    .classList.add("hidden");
+            }, 1500)
+        });
+
+        document.querySelector(".logout-button").classList.add("hidden")
+
+        document.querySelector(".copyUrl").addEventListener("click", () => {
+            navigator.clipboard.writeText(window.location.href);
+        });
+    </script>
+
+    <%- include('./partials/footer.ejs') %>

@@ -1,0 +1,66 @@
+<%- include('./partials/header.ejs') %>
+  <div class="absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] container mx-auto p-6">
+    <div class="max-w-lg mx-auto bg-white p-6 border border-gray-300 rounded-lg shadow-md">
+      <h2 class="text-2xl font-semibold mb-4">Edit This Hisab</h2>
+      <form action="/profile/hisab/edit/update/<%= hisab._id %>" method="post">
+        <div class="mb-4">
+          <input name="title" type="text" value="<%= hisab.title %>" class="w-full p-2 border border-gray-300 rounded"
+            required minlength="3" maxlength="100">
+        </div>
+        <div class="mb-4">
+          <textarea name="description"
+            class="resize-none w-full p-2 border border-gray-300 rounded h-32"><%= hisab.description %></textarea>
+        </div>
+        <div class="mb-4">
+          <label class="inline-flex items-center">
+            <input <% if(hisab.encrypted) { %> checked <% } %> name="encrypted" type="checkbox" class="form-checkbox
+              encryptedCheckbox">
+              <span class="ml-2">Encrypt this file</span>
+          </label>
+          <div class="hidden passcodeDiv">
+            <input name="passcode" type="password" value="<%= hisab.passcode %>"
+              class="passcodeInput w-full mt-2 p-2 border border-gray-300 rounded">
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="inline-flex items-center">
+            <input <% if(hisab.shareable) { %> checked <% } %> name="shareable" type="checkbox" class="form-checkbox">
+              <span class="ml-2">Shareable file?</span>
+          </label>
+        </div>
+        <div class="mb-4">
+          <label class="inline-flex items-center">
+            <input <% if(hisab.editPermission) { %> checked <% } %> name="editPermission" type="checkbox"
+              class="form-checkbox">
+              <span class="ml-2">Edit permissions.</span>
+          </label>
+        </div>
+        <input class="updateHisab w-full bg-blue-500 text-white p-2 rounded cursor-pointer" type="submit"
+          value="Update This Hisab">
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const passcodeDiv = document.querySelector('.passcodeDiv');
+    const passcodeInput = document.querySelector('.passcodeInput');
+
+    if (document.querySelector(".encryptedCheckbox").hasAttribute("checked")) {
+      passcodeDiv.classList.remove('hidden');
+    }
+
+    document.querySelector('.encryptedCheckbox').addEventListener('change', function () {
+      if (this.checked) {
+        passcodeDiv.classList.remove('hidden');
+        passcodeInput.setAttribute('required', 'true');
+      } else {
+        passcodeDiv.classList.add('hidden');
+        passcodeInput.removeAttribute('required');
+        passcodeInput.value = "";
+      }
+    });
+
+    document.querySelector(".create-new-hisab").classList.add("hidden")
+    document.querySelector(".logout-button").classList.add("hidden")
+  </script>
+  <%- include('./partials/footer.ejs') %>

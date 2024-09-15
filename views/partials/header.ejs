@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<body class="relative">
+  <header class="flex items-center justify-between px-8 py-6">
+    <h1 class="text-xl">Khatabook</h1>
+
+    <% var showLinks=typeof showLinks !=='undefined' ? showLinks : true %>
+      <% if(showLinks) { %>
+        <div class="flex items-center gap-5">
+          <a class="home-button" href="/profile">Home</a>
+          <a class="create-new-hisab" href="/profile/hisab">Create New Hisab</a>
+          <a class="logout-button text-red-500" href="/logout">Logout</a>
+        </div>
+        <% } %>
+  </header>
