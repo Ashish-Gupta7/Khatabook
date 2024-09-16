@@ -82,12 +82,20 @@ const passcodeHisabController = async (req, res) => {
     let hisabId = req.params.hisabId;
     let hisab = await hisabModel.findOne({ _id: hisabId });
     let passcode = req.body.passcode;
+    console.log(passcode);
+    console.log("hisabId");
+    console.log("hisab");
+    console.log(passcode !== hisab.passcode);
+
+    console.log("hhh");
 
     if (passcode !== hisab.passcode) {
       return res
         .status(401)
         .render("error", { err: "Incorrect passcode.", status: 401 });
     } else {
+      console.log("check");
+
       return res.status(200).render("hisab", { hisab });
     }
   } catch (err) {
@@ -205,7 +213,7 @@ const viewHisabController = async (req, res) => {
     let hisabsUser = hisab.user;
     if (loggedInUser || hisabsUser) {
       if (hisab.encrypted) {
-        return res.render("viewerPass");
+        return res.render("viewerPass", { hisabId });
       }
     } else {
       return res.status(403).render("error", {

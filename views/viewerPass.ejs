@@ -23,7 +23,7 @@
 </style>
 
 <body class="flex items-center justify-center">
-  <form action="/profile/hisab/verify" method="post" class="flex flex-col items-start">
+  <form action="/profile/hisab/verify/<%= hisabId %>" method="post" class="flex flex-col items-start">
     <h1 class="text-3xl text-red-500">Passcode</h1>
     <input class="border border-black mt-2 rounded-md px-3 py-2" type="password" name="passcode" id=""
       placeholder="Enter Passcode">

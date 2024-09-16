@@ -7,11 +7,11 @@ const hisabModel = require("../models/hisab-model");
 const { generateToken } = require("../utils/index-token-utils");
 
 const getLoginController = (req, res) => {
-  res.status(200).render("index", { showLinks: false }); // 200 for successful rendering
+  res.status(200).render("index", { showLinks: false });
 };
 
 const getRegisterController = (req, res) => {
-  res.status(200).render("register", { showLinks: false }); // 200 for successful rendering
+  res.status(200).render("register", { showLinks: false });
 };
 
 const postRegisterController = async (req, res) => {
@@ -22,7 +22,7 @@ const postRegisterController = async (req, res) => {
     if (user) {
       return res
         .status(409)
-        .render("error", { err: "User already exists.", status: 409 }); // 409 Conflict
+        .render("error", { err: "User already exists.", status: 409 });
     }
 
     let err = userValidate({ name, username, email, password });

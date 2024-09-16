@@ -26,8 +26,8 @@ router.get("/edit/:hisabId", isLoggedIn, getEditHisabController);
 
 router.post("/edit/update/:hisabId", isLoggedIn, postEditHisabController);
 
-router.get("/verify/:hisabId", isLoggedIn, viewHisabController);
-
 router.post("/verify/:hisabId", isLoggedIn, passcodeHisabController);
+
+router.get("/verify/:hisabId", isLoggedIn, viewHisabController);
 
 module.exports = router;
