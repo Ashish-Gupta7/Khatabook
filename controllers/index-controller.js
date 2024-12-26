@@ -60,7 +60,9 @@ const postRegisterController = async (req, res) => {
           res.status(302).redirect("/profile");
         } catch (err) {
           dbgr(`Error during user creation: ${err.message}`);
-          return res.status(500).render("error", err);
+          return res
+            .status(500)
+            .render("error", { err: "Failed to create user.", status: 500 });
         }
       });
     });
