@@ -1,37 +1,41 @@
 <%- include('./partials/header.ejs') %>
-    <div class="absolute copieddiv hidden left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-2 bg-blue-500 rounded-md">
+    <div
+        class="absolute copieddiv hidden left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-2 bg-blue-500 rounded-md max-[600px]:rounded-sm max-[600px]:py-1 max-[600px]:text-sm max-[600px]:top-20">
         <h3 class="text-white font-semibold">
             Link Copied
         </h3>
     </div>
     <div
-        class="absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] max-w-2xl mx-auto p-6 bg-white rounded-lg border-2 border-black">
+        class="absolute left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] max-w-2xl mx-auto p-6 bg-white rounded-lg border-2 border-black max-[500px]:p-3 max-[500px]:rounded-md max-[370px]:p-2 max-[370px]:rounded-sm max-[370px]:border">
         <div class="flex justify-between items-center mb-4">
-            <div class="flex space-x-4">
+            <div class="flex space-x-4 max-[500px]:space-x-2 max-[370px]:space-x-1">
                 <% if(hisab.encrypted) { %>
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded">Encrypted</button>
+                    <button
+                        class="bg-blue-500 text-white px-4 py-2 rounded max-[440px]:rounded-sm max-[440px]:px-3 max-[440px]:py-1 max-[440px]:text-sm max-[370px]:text-xs">Encrypted</button>
                     <% } else { %>
-                        <button class="bg-emerald-500 text-white px-4 py-2 rounded">Available</button>
+                        <button
+                            class="bg-emerald-500 text-white px-4 py-2 rounded max-[440px]:rounded-sm max-[440px]:px-3 max-[440px]:py-1 max-[440px]:text-sm max-[370px]:text-xs">Available</button>
                         <% } %>
                             <% if(hisab.shareable) { %>
-                                <button class="sharebtn text-gray-700 px-4 py-2 rounded flex items-center space-x-2">
-                                    <span class="copyUrl">Share as a link</span>
+                                <button class="sharebtn text-gray-700 px-2 rounded flex items-center space-x-2">
+                                    <span class="copyUrl text-nowrap max-[440px]:text-sm max-[370px]:text-xs">Share
+                                        as a link</span>
                                 </button>
                                 <% } %>
                                     <a href="/profile/hisab/delete/<%= hisab._id %>"
-                                        class="bg-red-500 text-white px-4 py-2 rounded">Delete</a>
+                                        class="bg-red-500 text-white px-4 py-2 rounded max-[440px]:rounded-sm max-[440px]:px-3 max-[440px]:py-1 max-[440px]:text-sm max-[370px]:text-xs">Delete</a>
                                     <% if(hisab.editPermission) { %>
                                         <a href="/profile/hisab/edit/<%= hisab._id %>"
-                                            class="bg-yellow-400 text-white px-4 py-2 rounded">Edit</a>
+                                            class="bg-yellow-400 text-white px-4 py-2 rounded max-[440px]:rounded-sm max-[440px]:px-3 max-[440px]:py-1 max-[440px]:text-sm max-[370px]:text-xs">Edit</a>
                                         <% } %>
             </div>
         </div>
-        <div class="text-gray-500 mb-4">Created on <%= hisab.createdAt.toLocaleDateString() %>
+        <div class="text-gray-500 mb-4 max-[370px]:text-sm">Created on <%= hisab.createdAt.toLocaleDateString() %>
         </div>
-        <h2 class="text-xl font-semibold mb-2">
+        <h2 class="text-xl font-semibold mb-2 capitalize max-[370px]:text-base">
             <%= hisab.title %>
         </h2>
-        <p class="text-gray-700">
+        <p class="text-gray-700 max-[370px]:text-sm">
             <%= hisab.description %>
         </p>
     </div>
@@ -40,17 +44,19 @@
     <script>
         var timer;
         const sharebtn = document.querySelector(".sharebtn");
-        sharebtn.addEventListener("click", function (e) {
-            clearTimeout(timer);
+        if (sharebtn) {
+            sharebtn.addEventListener("click", function (e) {
+                clearTimeout(timer);
 
-            document.querySelector(".copieddiv")
-                .classList.remove("hidden");
-
-            timer = setTimeout(function () {
                 document.querySelector(".copieddiv")
-                    .classList.add("hidden");
-            }, 1500)
-        });
+                    .classList.remove("hidden");
+
+                timer = setTimeout(function () {
+                    document.querySelector(".copieddiv")
+                        .classList.add("hidden");
+                }, 1500);
+            });
+        }
 
         document.querySelector(".logout-button").classList.add("hidden")
 

@@ -23,16 +23,16 @@
   }
 </style>
 
-<body class="relative">
-  <header class="flex items-center justify-between px-8 py-6">
+<body class="relative overflow-hidden">
+  <header class="flex items-center justify-between px-8 py-6 max-[820px]:px-4 max-[820px]:py-4 max-[400px]:p-3">
     <h1 class="text-xl">Khatabook</h1>
 
     <% var showLinks=typeof showLinks !=='undefined' ? showLinks : true %>
       <% if(showLinks) { %>
         <div class="flex items-center gap-5">
-          <a class="home-button" href="/profile">Home</a>
-          <a class="create-new-hisab" href="/profile/hisab">Create New Hisab</a>
-          <a class="logout-button text-red-500" href="/logout">Logout</a>
+          <a class="home-button max-[400px]:text-xs" href="/profile">Home</a>
+          <a class="create-new-hisab max-[400px]:text-xs" href="/profile/hisab">Create New Hisab</a>
+          <a class="logout-button text-red-500 max-[400px]:text-xs" href="/logout">Logout</a>
         </div>
         <% } %>
   </header>
