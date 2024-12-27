@@ -1,6 +1,5 @@
 # Khatabook
 
-## Link
 https://khatabook-mg0i.onrender.com
 
 ## commands
